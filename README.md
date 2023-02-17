@@ -52,9 +52,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Literature
 \[1\] Kashmir3D v8.0.9 English version: https://www.kashmir3d.com/index-e.html
+
 \[2\] Rickenbacher, Martin: Unser Mann in Yokohama, 2004 (in German): http://www.martinrickenbacher.ch/publikationen/pdf/Topo107S12-13_A3lr.pdf
+
 \[3\] DHM25, das digitale Höhenmodell der Schweiz, 2005 (in German): https://geofiles.be.ch/geoportal/pub/lpi/DHM2510_LANG_DE.PDF
+
 \[4\] ESRI GRID (Wikipedia): https://en.wikipedia.org/wiki/Esri_grid
+
 \[5\] DHM25/200: The light version of the digital height model of Switzerland: https://www.swisstopo.admin.ch/en/geodata/height/dhm25200.html
+
 \[6\] Translate the DHM25 model of Swisstopo from MMBLT to an ARC/ESRI GRID https://ourednik.info/maps/2015/11/29/translate-the-dhm25-model-of-swisstopo-from-mmblt-to-an-arcesri-grid/
 
