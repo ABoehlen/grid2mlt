@@ -1,0 +1,10 @@
+not yet finished. Testing a new version that should be able to cope with bigger DEMs.
+
+----
+
+v1 error message
+
+$ ./grid2mlt.awk  eurdem_clip_lv03.txt > eurdem_clip_lv03.mlt
+
+awk: ./grid2mlt.awk:89: (FILENAME=eurdem_clip_lv03.txt FNR=39382) fatal: interpret.h:749:r_interpret: t1->stptr: can't reallocate 1209475799 bytes of memory (Cannot allocate memory)
+

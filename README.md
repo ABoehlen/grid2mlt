@@ -42,7 +42,7 @@ The only argument you give is the ESRI ASCII GRID file which extension may be \*
 
 To import the resulting file into Kashmir3D, launch the programme, select File –> OpenMap –> Open New Map and choose the freshly generated \*.mlt file. Kashmir3D will convert it into its native format DCM. During this process the coordinates will be transformed from the Swiss coordinate system LV03 into geographic coordinates WGS1984.
 
-## Test files
+## Test file
 You can use the enclosed ASC file dhm1000.asc for testing purposes. This is a version of the DHM25 digital elevation model with a 1000 m grid.
 
 Reference:  
