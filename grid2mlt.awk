@@ -3,7 +3,7 @@
 #
 # Filename:     grid2mlt.awk
 # Author:       Adrian Boehlen
-# Date:         26.02.2023
+# Date:         26.02.2026
 # Version:      1.1
 #
 # Purpose:      konvertiert ein Hoehenmodell im Format ESRI ASCII GRID in ein Hoehenmodell
