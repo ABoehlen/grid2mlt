@@ -3,14 +3,17 @@
 #
 # Filename:     grid2mlt.awk
 # Author:       Adrian Boehlen
-# Date:         17.02.2023
-# Version:      1.0
+# Date:         26.02.2023
+# Version:      1.1
 #
 # Purpose:      konvertiert ein Hoehenmodell im Format ESRI ASCII GRID in ein Hoehenmodell
 #               im Format swisstopo MMBL
 #
 #               Voraussetzung: Das ESRI ASCII GRID muss im Schweizer Landeskoordinatensystem
 #               CH1903 LV03 vorliegen
+#
+#               Einschraenkung: Da die gesamte Konvertierung im Arbeitsspeicher erfolgt,
+#               koennen nur relativ kleine Hoehenmodelle konvertiert werden 
 #
 ################################################################################################
 
@@ -61,12 +64,10 @@ END {
 
   ##### diverse Werte ermitteln #####
   
-  # Koordinaten der Eckpunkte
-  # da ESRI ASCII GRID die Punkte in der Mitte der Matrix definiert, MMBL hingegen auf den Kreuzungspunkten
-  # des Gitters, muss bei den abgeleiteten X/Y Werten der Wert der Maschenweite abgezogen werden
+  # Ableiten der Eckpunktkoordinaten aus den ESRI ASCII GRID Headerdaten
   nwX = xllcorner;
-  nwY = (nrows * cellsize + yllcorner) - cellsize;
-  seX = (ncols * cellsize + xllcorner) - cellsize;
+  nwY = yllcorner + (nrows - 1) * cellsize;
+  seX = xllcorner + (ncols - 1) * cellsize;
   seY = yllcorner;
   
   # Abmessungen des Hoehenmodells
