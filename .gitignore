@@ -1,7 +1,6 @@
 # Test files
-DHM200.asc
+dhm25.asc
+dhm25.mlt
+dhm25.dcm
+dhm200.asc
 matter25.asc
-dhmtest.asc
-dhmtest.mlt
-mlt2grid.pl
-dhm1000.mlt
