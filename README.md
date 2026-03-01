@@ -67,7 +67,7 @@ HOEHENBEREICH     [DM]       0     44280       (6 CHARACTER PRO HOEHENWERT)
 
 ### Import in Kashmir3D
 
-To import the elevation model into Kashmir3D, start the programme, select _File –> OpenMap –> Open New Map_ and select the newly created \*.mlt file. Kashmir3D will convert it to its native DCM format. During this process the coordinates are transformed from the Swiss coordinate system LV03 to WGS1984 geographic coordinates.
+To import the elevation model into Kashmir3D, start the programme, select _File –> OpenMap –> Open New Map_ and select the newly created \*.mlt file. Kashmir3D will convert it to its native DCM format. During this process the coordinates are transformed from the Swiss coordinate system LV03 to WGS1984 geographic coordinates. Depending on the size of the digital elevation model this process can take quite a long time and the programme may appear unresponsive.
 
 ## Test file
 You can use the enclosed ASC file dhm1000.asc for testing purposes. This is a version of the DHM25 digital elevation model with a 1000 m grid.
