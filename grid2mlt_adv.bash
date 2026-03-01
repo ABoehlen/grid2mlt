@@ -3,8 +3,8 @@
 #
 # Filename:     grid2mlt_adv.bash
 # Author:       Adrian Boehlen
-# Date:         27.02.2026
-# Version:      0.1
+# Date:         01.03.2026
+# Version:      1.0
 #
 # Purpose:      konvertiert ein Hoehenmodell im Format ESRI ASCII GRID in ein Hoehenmodell
 #               im Format swisstopo MMBL
@@ -44,7 +44,6 @@ cd tmp
 # ASCII Grid in kleine Files zu 6 Zeilen aufsplitten und Anzahl Files ermitteln
 echo "ASCII Grid aufteilen..."
 awk 'NR%6==1{x="T"++i;if(i%100==0){printf("\tDatei %d wird geschrieben...\n", i)}}{print > x;}'  ../$1
-
 
 # Header aus dem ersten temporaeren File einlesen
 ncols=$(awk '$1 ~ /ncols|NCOLS/ {print $2}' T1)

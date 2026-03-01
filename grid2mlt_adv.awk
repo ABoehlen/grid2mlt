@@ -4,7 +4,7 @@
 # Filename:     grid2mlt_adv.awk
 # Author:       Adrian Boehlen
 # Date:         01.03.2026
-# Version:      0.1
+# Version:      1.0
 #
 # Purpose:      konvertiert ein Hoehenmodell im Format ESRI ASCII GRID in ein Hoehenmodell
 #               im Format swisstopo MMBL
@@ -12,13 +12,13 @@
 #               Voraussetzungen:
 #               - Das ESRI ASCII GRID muss im Schweizer Landeskoordinatensystem
 #                 CH1903 LV03 vorliegen
-#               - Wird von grid2mlt_v2.bash im gleichen Verzeichnis aufgerufen
+#               - Wird von grid2mlt_adv.bash im gleichen Verzeichnis aufgerufen
 #
 ################################################################################################
 
 BEGIN {
 
-  # Damit diese Informationen, die auf den Bildschirm gehen sollen, 
+  # Damit die Informationen, die auf den Bildschirm gehen sollen, 
   # nicht in der Ausgabedatei landen, wird /dev/stderr zweckentfremdet.
 
   # jeder Wert als Record einlesen
@@ -37,7 +37,7 @@ BEGIN {
   # Abmessungen des Hoehenmodells
   we = seX - nwX;
   ns = nwY - seY;
-  
+
   # Anzahl Matrixpunkte pro Dimension und gesamt 
   weMp = we / cellsize + 1;
   nsMp = ns / cellsize + 1;
@@ -76,10 +76,11 @@ $1 !~ /^\s*$/{
       printf("%6d", $1 * 10);
     if (spalte == ncols) {
       zeile++;
-      
+
       # alle 100 Zeilen eine Ausgabe auf den Bildschirm erzeugen
       if (zeile % 100 == 0)
         printf("\tZeile %d wird geschrieben...\n", zeile) > "/dev/stderr";
+
       printf("\n");
       spalte = 0;
       next;
@@ -94,7 +95,7 @@ $1 !~ /^\s*$/{
 }
 
 END {
-  printf("\tZeile %d wird geschrieben...\n", zeile)                   > "/dev/stderr";
+  printf("\tZeile %d wird geschrieben...\n", zeile)                 > "/dev/stderr";
   
   print "\n======================================================"  > "/dev/stderr";
   print "Bitte Ergebnisdatei 'out.mlt' wunschgemaess umbenennen"    > "/dev/stderr";

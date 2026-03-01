@@ -63,43 +63,43 @@ END {
     exit;
 
   ##### diverse Werte ermitteln #####
-  
+
   # Ableiten der Eckpunktkoordinaten aus den ESRI ASCII GRID Headerdaten
   nwX = xllcorner;
   nwY = yllcorner + (nrows - 1) * cellsize;
   seX = xllcorner + (ncols - 1) * cellsize;
   seY = yllcorner;
-  
+
   # Abmessungen des Hoehenmodells
   we = seX - nwX;
   ns = nwY - seY;
-  
+
   # Anzahl Matrixpunkte pro Dimension und gesamt 
   weMp = we / cellsize + 1;
   nsMp = ns / cellsize + 1;
   totMp = weMp * nsMp;
-  
+
   # Recordlaenge (fuer jeden Hoehenwert sind 6 Zeichen verfuegbar)
   recLen = weMp * 6;
   proRec = weMp;
-  
+
   ##### Inhalt durchgehen und Hoehenangaben gemaess Matrixformat MMBL formatieren #####
-  
+
   # alle Hoehenwerte in Variable einlesen
   for (i = 7; i <= NR; i++ )
     alleHoehen = alleHoehen daten[i];
- 
+
   totH = split(alleHoehen, hoehenListe);
-  
+
   # pruefen, ob die berechnete Anzahl Hoehenwerte mit der im ESRI ASCII GRID vorhandenen
   # uebereinstimmt, und falls nicht, Programm abbrechen
   if (totMp != totH) {
     printf("\nFehlerhafte Struktur des ESRI ASCII GRIDs\nAbbruch\n") > "/dev/stderr";
     exit;
   }
-  
+
   ##### Datenrecords aufbauen #####
-  
+
   # nodata mit 0 ersetzen
   # Meter in Dezimeter umrechnen
   # jeweils nach einer Matrixzeile eine neue Zeile beginnen
@@ -114,14 +114,14 @@ END {
       anz = 0;
     }
   }
-  
+
   ##### Header aufbauen #####
-  
+
   # minimale und maximale Hoehe bestimmen
   asort(hoehenListe);
   minH = hoehenListe[1];
   maxH = hoehenListe[totH];
-  
+
   header = sprintf("NEWHEADER\n");
   header = header sprintf("--------------------------------------------------------------------------------\n");
   header = header sprintf("DHM25-MATRIXMODELL                             (c)BUNDESAMT F. LANDESTOPOGRAPHIE\n");
@@ -136,9 +136,9 @@ END {
   header = header sprintf("%-19s%11d%17s%-6d%23s\n", "RECORDLAENGE(CHAR.)", recLen, " ", proRec, "HOEHENWERTE PRO RECORD");
   header = header sprintf("--------------------------------------------------------------------------------\n");
   header = header sprintf("ENDHEADER\n");
-  
+
   ##### MMBL-Datei ausgeben #####
-  
+
   printf(header);
   printf(inhalt);
 
