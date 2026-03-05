@@ -3,8 +3,8 @@
 #
 # Filename:     grid2mlt_simple.awk
 # Author:       Adrian Boehlen
-# Date:         01.03.2026
-# Version:      1.1
+# Date:         05.03.2026
+# Version:      1.2
 #
 # Purpose:      konvertiert ein Hoehenmodell im Format ESRI ASCII GRID in ein Hoehenmodell
 #               im Format swisstopo MMBL
@@ -119,8 +119,8 @@ END {
 
   # minimale und maximale Hoehe bestimmen
   asort(hoehenListe);
-  minH = hoehenListe[1];
-  maxH = hoehenListe[totH];
+  minH = hoehenListe[1] * 10;
+  maxH = hoehenListe[totH] * 10;
 
   header = sprintf("NEWHEADER\n");
   header = header sprintf("--------------------------------------------------------------------------------\n");

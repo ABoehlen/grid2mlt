@@ -28,24 +28,28 @@ cd grid2mlt
 As argument you give the ESRI ASCII GRID file which extension may be \*.txt or (typically) \*.asc. You also have to define the output file, which extension has to be \*.mlt. For example if you use the light version of the digital height model of Switzerland \[5\], you type:
 
 ```
-./grid2mlt_simple.awk  DHM200.asc > dhm200.mlt
+./grid2mlt_simple.awk DHM200.asc > dhm200.mlt
 ```
 
 ### grid2mlt_advanced
-In this case just specify the ESRI ASCII GRID as the argument. Be sure to start the shell script (extension \*.bash) not the AWK script, which is automatically executed by the shell script during runtime. 
+In this case, you must specify the ESRI ASCII GRID as the first argument. The second argument is the number of rows that each part of the file to be created should have. There is no definition for how many elevation values a single row in ESRI ASCII GRID format contains, so a file can contain either many rows with only a few values each or few rows with many values. It is recommended to pack as many rows as possible into each section, but 'out of memory' error messages may occur if there are too many values. In this case, try a smaller value.
+
+Be sure to start the shell script (extension \*.bash) not the AWK script, which is automatically executed by the shell script during runtime.
+
+This example also uses the the light version of the digital height model of Switzerland \[5\], which is divided into sections of 100 lines each:
 
 ```
-./grid2mlt_adv.bash  DHM200.asc
+./grid2mlt_adv.bash DHM200.asc 100
 ```
 
-Depending on the size of the digital elevation model this process can take quite a long time. You can track the progress in the command window. Once the process is complete, the following message appears in the window:
+Depending on the size of the digital elevation model this process can take quite a long time. You can track the progress in the command window. Once the process is complete, a message like the following will appear in the window:
 
 ```
 ======================================================
 Bitte Ergebnisdatei 'out.mlt' wunschgemaess umbenennen
 Bitte 'minH' und 'maxH' manuell in Header uebertragen
   minH =     0
-  maxH = 44280
+  maxH = 45566
 ======================================================
 ```
 
@@ -53,15 +57,15 @@ The resulting file has the default name 'out.mlt' so you must assign a suitable 
 
 Before:
 ```
-MATRIXDIMENSIONEN WE/NS    385       240       TOTAL     92400 MATRIXPUNKTE
+MATRIXDIMENSIONEN WE/NS   1926      1201       TOTAL   2313126 MATRIXPUNKTE
 HOEHENBEREICH     [DM]    minH      maxH       (6 CHARACTER PRO HOEHENWERT)
 --------------------------------------------------------------------------------
 ```
 
 After:
 ```
-MATRIXDIMENSIONEN WE/NS    385       240       TOTAL     92400 MATRIXPUNKTE
-HOEHENBEREICH     [DM]       0     44280       (6 CHARACTER PRO HOEHENWERT)
+MATRIXDIMENSIONEN WE/NS   1926      1201       TOTAL   2313126 MATRIXPUNKTE
+HOEHENBEREICH     [DM]       0     45566       (6 CHARACTER PRO HOEHENWERT)
 --------------------------------------------------------------------------------
 ```
 
